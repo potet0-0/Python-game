@@ -65,7 +65,7 @@ with open("level.txt", "r") as f:
         if line:
 
             x = map(get, (line.split()) )
-            #blocks.append(pygame.Rect(x, y, BLOCK_SIZE, BLOCK_SIZE))
+            blocks.append(pygame.Rect(x, y, BLOCK_SIZE, BLOCK_SIZE))
 
 # --- Rect ---
 mario_rect = STANDING_SURFACE.get_rect(center=(X_POSITION, Y_POSITION))
@@ -131,7 +131,7 @@ while True:
     mario_rect.center = (X_POSITION, Y_POSITION)
 
     for block in blocks:
-        if mario.rect.colliderect(block):
+        if mario_rect.colliderect(block):
             if X_VELOCITY > 0:
                 mario_rect.right = block.left
             elif X_VELOCITY < 0:
