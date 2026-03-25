@@ -5,14 +5,14 @@ pygame.init()
 
 # --- Setup ---
 WORLD_WIDTH, WORLD_HEIGHT = 7500, 800
-WIDTH, HEIGHT = 800, 800
+WIDTH, HEIGHT = 1000, 800
 CLOCK = pygame.time.Clock()
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("jumping")
+pygame.display.set_caption("Pyton game")
 
 # Physics / movement
 Y_GRAVITY = 1
-JUMP_HEIGHT = 16
+JUMP_HEIGHT = 20
 Y_VELOCITY = 0
 VELOCITY = 8
 on_ground = True
@@ -24,8 +24,7 @@ cam_x = 0
 # Animation
 anim_frame = 0
 anim_timer = 0
-ANIM_SPEED = 6
-
+ANIM_SPEED = 3
 BLOCK_SIZE = 48
 GROUND_Y = 660
 
@@ -59,14 +58,10 @@ with open("level.txt", "r", encoding="utf-8-sig") as f:
             if len(parts) == 2:
                 blocks.append(pygame.Rect(int(parts[0]), int(parts[1]), BLOCK_SIZE, BLOCK_SIZE))
 
-mario = STANDING.get_rect(center=(400, GROUND_Y))
+mario = STANDING.get_rect(midbottom=(400, GROUND_Y))
 
 # Initialize camera to player position
-cam_x = mario.x - WIDTH // 2
-if cam_x < 0:
-    cam_x = 0
-if cam_x > WORLD_WIDTH - WIDTH:
-    cam_x = WORLD_WIDTH - WIDTH
+cam_x = max(0, min(mario.x - WIDTH // 2, WORLD_WIDTH - WIDTH))
 
 # --- Game loop ---
 while True:
