@@ -49,8 +49,12 @@ while True:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE and on_ground:
-                y_velocity = jump_strength
-                on_ground  = False
+                if on_ground:
+                    y_velocity = jump_strength
+                    on_ground  = False
+                elif doubleJump > 0:
+                    y_velocity = jump_strength
+                    doubleJump = 1
 
     # Left / right movement
     keys = pygame.key.get_pressed()
