@@ -11,4 +11,19 @@ its pretty boring having a plain gray background
 i need ideas tho
 i dont have ideas
 
-thats all for now :p
+thats all for now
+
+refleskjonsnotat: 10 setninger
+    bedre commit message
+    
+Ting jeg skal gjøre videre: 10 ting.
+    måne level
+        lav gravity
+        andre farger
+    opp ned level?
+        flip screen
+    jump pad
+        grønn
+        får deg til å hoppe
+        eller booste deg i en retning
+    

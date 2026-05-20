@@ -29,9 +29,14 @@ doubleJump    = 1
 jump_buffer   = 0
 level         = 1
 next_level    = False
+jump_pressed  = False
+boosted       = False
 
 # Ground
 ground_y = HEIGHT - 50
+
+#Boost pad
+booster = pygame.Rect(100, 100, 100, 100)
 
 # Target box
 box  = pygame.Rect(1025, 146, 40, 40)
@@ -53,8 +58,10 @@ while True:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
+                jump_pressed = True
                 if on_ground:
-                    jump_buffer = 4   # normal jump buffer
+                    jump_buffer  = 2   # change if i want to
+                    jump_pressed = False
 
     # Left / right movement
     keys = pygame.key.get_pressed()
@@ -95,10 +102,11 @@ while True:
     if on_ground:
         doubleJump = 1
 
-    # ⭐ FIXED DOUBLE JUMP ⭐
-    if keys[pygame.K_SPACE] and not on_ground and doubleJump > 0:
+    
+    if jump_pressed and not on_ground and doubleJump > 0:
         y_velocity = jump_strength
         doubleJump = 0
+        jump_pressed = False
 
     # Resolve jump buffer (ground only)
     if jump_buffer > 0:
@@ -109,7 +117,7 @@ while True:
             jump_buffer = 0
 
     colliding = player.colliderect(box)
-
+    boosted   = player.colliderect(booster)
     # Draw
     screen.fill(DARK)
     pygame.draw.rect(screen, WHITE, (0, ground_y, WIDTH, HEIGHT - ground_y))
@@ -117,6 +125,7 @@ while True:
         pygame.draw.rect(screen, WHITE, plat)
     pygame.draw.rect(screen, BOX_COLOR, box)
     pygame.draw.rect(screen, GREEN if colliding else BLUE, player)
+    pygame.draw.rect(screen, GREEN, booster)
 
     label = font.render("Next level" if colliding else "Not Touching Square", True, WHITE)
     screen.blit(label, (20, 20))
@@ -193,3 +202,4 @@ while True:
 
     pygame.display.flip()
     clock.tick(60)
+    jump_pressed = False
