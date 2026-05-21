@@ -17,3 +17,6 @@ FIKSE DOUBLE JUMP
 .
 
 Torsdag 21:
+
+Plan for torsdag:
+bugfixe doublejump og fikse på sprites og farger til å se kult ut

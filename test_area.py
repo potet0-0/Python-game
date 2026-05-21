@@ -95,7 +95,6 @@ while True:
     if on_ground:
         doubleJump = 1
 
-    # ⭐ FIXED DOUBLE JUMP ⭐
     if keys[pygame.K_SPACE] and not on_ground and doubleJump > 0:
         y_velocity = jump_strength
         doubleJump = 0

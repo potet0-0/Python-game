@@ -1,8 +1,12 @@
 ﻿import pygame
 import sys
 import time
-pygame.init()
 
+pygame.init()
+pygame.mixer.init()
+my_sound = pygame.mixer.Sound('mario_coin_sound.mp3')
+
+pygame.time.wait(int(my_sound.get_length() * 1000))
 # Screen
 WIDTH, HEIGHT = 1200, 800
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -25,8 +29,8 @@ y_velocity    = 0
 gravity       = 0.6
 jump_strength = -13
 on_ground     = False
-doubleJump    = 1
-jump_buffer   = 0
+maxJumps      = 2
+jumpCount     = 0
 level         = 1
 next_level    = False
 
@@ -50,18 +54,22 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        # ground check
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                if on_ground:
-                    jump_buffer = 4   # normal jump buffer
+                if jumpCount < maxJumps:
+                    y_velocity = jump_strength
+                    jumpCount += 1
 
-    # Left / right movement
+
+    # Left and right movement
     keys = pygame.key.get_pressed()
     if keys[pygame.K_a]: player.x -= speed
     if keys[pygame.K_d]: player.x += speed
 
     player.x = max(0, min(WIDTH - player.width, player.x))
+
 
     prev_bottom = player.bottom
 
@@ -70,20 +78,24 @@ while True:
     player.y   += int(y_velocity)
 
     # reset on_ground before all collision checks
-    on_ground = False
 
-    # Platform collision (unchanged)
+    on_ground = False
+    # Platform collision
     for plat in platforms:
         if player.colliderect(plat):
+            on_ground = True
+            jumpCount = 0
             if prev_bottom <= plat.top + 5:
                 player.bottom = plat.top
                 y_velocity = 0
                 on_ground = True
+                jumpCount = 0
             else:
                 if player.centerx < plat.centerx:
                     y_velocity = 2
                 else:
                     y_velocity = 2
+
 
     # Ground check
     if player.bottom >= ground_y:
@@ -91,22 +103,9 @@ while True:
         y_velocity    = 0
         on_ground     = True
 
-    # Reset double jump on landing
     if on_ground:
-        doubleJump = 1
+        jumpCount = 0
 
-    # ⭐ FIXED DOUBLE JUMP ⭐
-    if keys[pygame.K_SPACE] and not on_ground and doubleJump > 0:
-        y_velocity = jump_strength
-        doubleJump = 0
-
-    # Resolve jump buffer (ground only)
-    if jump_buffer > 0:
-        jump_buffer -= 1
-        if on_ground:
-            y_velocity  = jump_strength
-            on_ground   = False
-            jump_buffer = 0
 
     colliding = player.colliderect(box)
 
@@ -122,6 +121,7 @@ while True:
     screen.blit(label, (20, 20))
 
     if colliding and not next_level:
+        my_sound.play()
         next_level = True
         level += 1
         if level == 2:
@@ -193,3 +193,10 @@ while True:
 
     pygame.display.flip()
     clock.tick(60)
+
+    # another ground check
+    if player.bottom >= ground_y:
+        player.bottom = ground_y
+        y_velocity    = 0
+        on_ground     = True
+
