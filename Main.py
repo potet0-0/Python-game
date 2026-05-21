@@ -4,7 +4,7 @@ import time
 
 pygame.init()
 pygame.mixer.init()
-my_sound = pygame.mixer.Sound('mario_coin_sound.mp3')
+my_sound = pygame.mixer.Sound('assets/mario_coin_sound.mp3')
 
 pygame.time.wait(int(my_sound.get_length() * 1000))
 # Screen
@@ -23,7 +23,7 @@ BOX_COLOR = (255, 80, 80)
 # Player
 player = pygame.Rect(WIDTH // 2 - 20, HEIGHT - 70, 35, 35)
 speed  = 9
-
+#
 # variables
 y_velocity    = 0
 gravity       = 0.6
