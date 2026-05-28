@@ -8,12 +8,19 @@ tenke og planlegge hva og hvordan jeg vil at produktet skal bli og ikke jobbe ut
 Ting jeg skal gjøre videre: 10 ting. 
 
 måne level lav gravity,
+
 jump pad/boost pad✔, 
+
 coyote frames❌,
+
 endre på figurene til sprites✔,
+
 startskjerm (lagde også en pausemeny)✔,
+
 lage victory skjerm✔,
+
 FIKSE DOUBLE JUMP✔,
+
 lage kamere logikk for å lage lange levels✔,
 
 
