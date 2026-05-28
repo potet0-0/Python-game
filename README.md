@@ -31,6 +31,11 @@ Lagde måne level hvor du har lav gravity og endret bakgrunnsfarge, endret på l
 
 plan for i morgen: fikse på kamera effekten, implementere flere av ideene jeg hadde (mest sansynelig implementere sprites istedenfor farger og rektangeler) så innen onsdag skal jeg bli ferdig med å lage sprites og å legge dem til i spillet.
 
-refleksjon på mandag:
+refleksjon på tirsdag:
 hadde ikke noe serlig plan for i dag uten om å fikse kamera og å gjøre ferdig noen bugs. dårlig å ikke ha plan, men jeg fikk gjort flere viktige ting i dag. sier det igjen, men jeg vil ha sprites ferdig innen onsdag!!
 
+Onsdag
+
+Fikk endret fra farger til bilder på bakgrunn og jeg fikk startet på siste level hvor jeg skal lage et flagg og en engen bakgrunn som jeg har begynnt på.
+Refleksjo onsdag:
+fikk laget "litt" og endret ikke på så mye, men jeg fikk laget noen flere sprites som jeg ikke fikk in, skal sette in i morgen på torsdag.
