@@ -57,3 +57,7 @@ plan: I dag skal jeg bli ferdig med all sprites, få ferdig victory level, fikse
 logg: i dag har jeg vært veldig produktiv og fått gjort mye, jeg lagde og gjorde victory menyen halveis ferdig, jeg fikk satte inn og byttet alle sprites (alle sprites satt inn i dag er laget av meg og ikke AI), satte inn en startsmeny OG en pausemeny, jeg har fikset på ganske mye tekst også.
 
 refleksjon for i dag: jeg har vert veldig produktiv og fått gjort alt jeg hadde på ide-lista mi uten om coyote frames, men det fant jeg ut at jeg ikke vill ha fordi du kan hopp 2 ganger uansett om du er eller ikke er på bakken som gjør coyote frames ganse ubrukelige. Uten om det har jeg alt i alt vert veldig produktiv og brukt veldig minimalt med ai, jeg måtte bruke litt for å finne ut on startsmenyen fordi det ikke var noen lærere og jeg fant ingenting på google, men uten om det har jeg laget alt selv i dag. Siste innspurt i morgen, får se hva jeg får til og har tid til. men jeg kommer til å prøve å fikse litt på kamera og også fikse på siste level.
+
+
+fredag (siste dag!!!):
+plan: JEG VIL BLI FERDIG MED ALLE MENYENE!,
