@@ -61,3 +61,10 @@ refleksjon for i dag: jeg har vert veldig produktiv og fått gjort alt jeg hadde
 
 fredag (siste dag!!!):
 plan: JEG VIL BLI FERDIG MED ALLE MENYENE!,
+
+logg: I dag fikk jeg gjort en del arbeid, ikke like mye som i går, men jeg fikk endret på level loading systemet, fikset på noen mindre bugs osv.
+
+refleksjon: jeg angrer på at jeg startet på nytt, men jeg mener at jeg fikk et resultat som jeg er fornøyd med. Bruken av AI var helt jævlig på de første uken og jeg følte at det var best om jeg startet på nytt. På det "andre" prosjektet mitt brukte jeg mye mindre AI og brukte guider og eksempler på Internett istedenfor hvis jeg ikke skjønte hva jeg skulle. Alt I alt, jobbet jeg ganske hardt, men når jeg ikke jobbet kastet jeg bort tiden min med å tulle og sånn. Hvis jeg skulle gjort dette prosjektet igjen vet jeg at jeg ville laget en MYE bedre skisse og ha en enda sterkere plan jeg hadde mange tider hvor jeg ikke visste helt hva jeg skulle.
+
+Takk for meg
+Isaac
