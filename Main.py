@@ -54,6 +54,65 @@ next_level = False
 # Ground
 ground_y = HEIGHT - 50
 
+# Leveldesing thingy
+levelDesign = [
+    (pygame.Rect(100, -10, 100, 10),
+    pygame.Rect(1025, 100, 40, 80),
+    [WIDTH//2, HEIGHT-70],
+    9,
+    -13,
+    0.6, 
+    backgrounds['dark']),
+    # level 0 ^
+
+    (pygame.Rect(50,  600, 100, 20),
+    pygame.Rect(1060, 100, 40, 40),
+    [100, 600],
+    7,
+    -12,
+    0.6, 
+    backgrounds['dark']),
+    # level 1 ^
+
+    (pygame.Rect(100, -10, 100, 10),
+    pygame.Rect(990,   70, 40, 40),
+    [50,  630],
+    9,
+    -13,
+    0.6,
+    backgrounds['dark']),
+    # level 2 ^
+
+    (pygame.Rect(100, -10, 100, 10),
+    pygame.Rect(840,   20, 40, 40),
+    [50,  650],
+    9,
+    -13,
+    0.3,
+    backgrounds['moon']),
+    # level 3 ^
+
+    (pygame.Rect(100, -10, 100, 10),
+    pygame.Rect(3120,  60, 40, 40),
+    [50,  670],
+    9,
+    -13,
+    0.6,
+    backgrounds['dark']),
+    # level 4 ^
+
+    (pygame.Rect(100, -10, 100, 10),
+    pygame.Rect(840,  500, 40,200),
+    [50,  200],
+    9,
+    -13,
+    0.6,
+    backgrounds['dark']),
+    # level 5 ^
+]
+
+
+
 # platforms listed for each level
 platforms = [
     [
@@ -146,10 +205,7 @@ def draw_pause():
     pause_title = font.render("pause menu", True, WHITE)
     screen.blit(pause_title, (WIDTH // 2 - 120, HEIGHT // 2 + 20))
     pygame.display.flip()
-    exit_btn = {
-        pygame.rect
-    }
-    pygame.draw.rect(screen, GREEN, exit_btn)
+
 
 
 # Game loop
@@ -241,12 +297,12 @@ while True:
     colliding = player.colliderect(box)
     boosting = player.colliderect(jumpPad)
     if boosting:
-        for y_velocity in range(1, -23, -1):  # for loop to make the boost smoother
-            print(y_velocity)
+        for y_velocity in range(1, -23, -1):  # for loop to make the boost smoother and incremental
             pygame.draw.rect(screen, GREENER if colliding else BLUE, player)
 
     # Draw
     flag_img = flag_green if next_level else flag_red
+    flag_img = pygame.transform.scale(flag_img, box.size)
 
     screen.blit(background, (0, 0))
     pygame.draw.rect(screen, WHITE, (0, ground_y, WIDTH, HEIGHT - ground_y))
@@ -286,63 +342,26 @@ while True:
     screen.blit(end_text, (400, 400))
 
     # next level logic
+# next level logic
+# next level logic
     if colliding and not next_level:
         my_sound.play()
-        next_level = True
         level += 1
-        # changes to first level
-        if level == 1:
-            platformLevel = platforms[level]  # collects the next platform list from the list
-            jumpPad = pygame.Rect(50, 600, 100, 20)
-            box = pygame.Rect(1060, 100, 40, 40)  # where the next level flag is placed
-            player.x = 100  # where the player spawns in
-            player.y = 600
-            speed = 7  # change speed variable
-            jump_strength = -12  # and jump strength
-            next_level = False  # makes so the level change only triggers once
-
-        # basically same as level 1 and 2
-        if level == 2:
-            platformLevel = platforms[level]
-            jumpPad = pygame.Rect(100, -10, 100, 10)
-            box = pygame.Rect(990, 70, 40, 40)
-            player.x = 50
-            player.y = 630
-            next_level = False
-
-        # moon level with changed background and lower gravity
-        if level == 3:
-            platformLevel = platforms[2]
-            box = pygame.Rect(840, 20, 40, 40)
-            player.x = 50
-            player.y = 650
-            gravity = 0.3  # set gravity lower
-            next_level = False
-            background = backgrounds['moon']
-
-        if level == 4:
-            platformLevel = platforms[3]
-            box = pygame.Rect(3120, 60, 40, 40)
-            player.x = 50
-            player.y = 670
-            gravity = 0.6  # change back the gravity
-            background = backgrounds['dark']  # also change back the background
-            next_level = False
-
-        # victory level
-        if level == 5:
-            platformLevel = platforms[4]
-            box = pygame.Rect(840, 500, 40, 200)
-            player.x = 50
-            player.y = 200
-            gravity = 0.6
-            next_level = False
-            flag_img = pygame.transform.scale(flag_img, (100, 400))
-
         if level == 6:
             print("Well done beating my game please give star on github repo")
-            pygame.quit()  # quit game
-            sys.exit()  # also quit game
+            pygame.quit()
+            sys.exit()
+        d = levelDesign[level]        
+        jumpPad    = d[0]             
+        box        = d[1]
+        player.x   = d[2][0]
+        player.y   = d[2][1]
+        speed      = d[3]
+        jump_strength = d[4]
+        gravity    = d[5]
+        background = d[6]
+        platformLevel = platforms[level]
+        next_level = False
 
     pygame.display.flip()
     clock.tick(60)

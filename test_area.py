@@ -113,10 +113,10 @@ box = pygame.Rect(1025, 100, 40, 80)
 font = pygame.font.SysFont(None, 32)
 
 # world edge for camera movement
-worldEdge_left = pygame.Rect(0, 0, 5, HEIGHT)
-worldEdge_right = pygame.Rect(WIDTH - 5, 0, 5, HEIGHT)
+worldEdge_left = pygame.Rect(0, 0, 2, HEIGHT)
+worldEdge_right = pygame.Rect(WIDTH - 2, 0, 2, HEIGHT)
 
-# menu logic loop thingy
+# menu logic loop thingy to make startmenu open on start
 menu = "menu"
 
 
@@ -138,7 +138,7 @@ while menu == "menu":
             if event.key == pygame.K_RETURN:
                 menu = "playing"
     draw_menu()
-    clock.tick(60)
+    #clock.tick(60)
 
 
 def draw_pause():
@@ -146,10 +146,7 @@ def draw_pause():
     pause_title = font.render("pause menu", True, WHITE)
     screen.blit(pause_title, (WIDTH // 2 - 120, HEIGHT // 2 + 20))
     pygame.display.flip()
-    exit_btn = {
-        pygame.rect
-    }
-    pygame.draw.rect(screen, GREEN, exit_btn)
+
 
 
 # Game loop
